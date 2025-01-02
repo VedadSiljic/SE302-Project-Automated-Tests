@@ -7,7 +7,7 @@ let randomEmail: string;
 let registerPage: RegisterPage;
 
 
-test.describe("register normal test", () => {
+test.describe("register normal tests", () => {
 
     test.beforeEach(async ({page})=> {
         randomEmail = `${Date.now()}@mail.com`; // get a random email because we can't use the same one for every test
@@ -19,7 +19,7 @@ test.describe("register normal test", () => {
     test("customer with this email address already exists", async () => {
 
         await registerPage.register("John", "Doe", "1994-04-04", "unknown street", "74000", "Unknown city", "Unknown state",
-            "Bosnia and Herzegovina", "063111222", "john@doe.com", "JohnDoe123$somethingRandom");
+            "Bosnia and Herzegovina", "063111222", "customer@practicesoftwaretesting.com", "JohnDoe123$somethingRandom");
 
         await registerPage.assertCustomerWithSameEmailExists();
 

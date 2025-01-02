@@ -57,13 +57,13 @@ export default class RegisterPage {
     }
 
     async assertSuccess(loginUrl: string) {
-        // wait for the login page to load if loading
-        await this.page.waitForLoadState("networkidle");
+        await this.page.waitForURL(loginUrl);
 
         expect(this.page.url()).toBe(loginUrl);
     }
 
     async assertCustomerWithSameEmailExists() {
+        await this.page.waitForSelector("div[data-test='register-error']");
         await expect(this.alertAlreadyExistsContainer).toBeVisible();
     }
 
